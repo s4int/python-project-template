@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+dist/
+build/
+.installed.cfg
+
+# uv
+.venv/
+.uv/
+.uv-cache/
+
+# pytest
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+
+# ruff
+.ruff_cache/
+
+# rumdl
+.rumdl_cache/
+
+# ty
+.ty_cache/
+
+# prek (hook environments / local cache)
+.prek/
+
+# Secrets and local env
+.env
+.env.*
+
+# OS and editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

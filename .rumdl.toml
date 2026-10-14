@@ -1,0 +1,7 @@
+exclude = [".specify", ".cursor"]
+line-length = 120
+
+[MD013]
+reflow = true
+reflow-mode = "normalize"
+code-blocks = false

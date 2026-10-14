@@ -1,0 +1,58 @@
+# Git hooks via prek (https://prek.j178.dev/) — not pre-commit.
+# Install: uv tool install prek && prek install
+
+[[repos]]
+repo = "builtin"
+hooks = [
+  { id = "check-merge-conflict" },
+  { id = "check-added-large-files" },
+  { id = "end-of-file-fixer" },
+  { id = "trailing-whitespace" },
+  { id = "check-yaml" },
+]
+
+[[repos]]
+repo = "https://github.com/adrienverge/yamllint"
+rev = "v1.38.0"
+
+[[repos.hooks]]
+id = "yamllint"
+args = ["-c", ".yamllint.yaml"]
+
+[[repos]]
+repo = "https://github.com/rvben/rumdl-pre-commit"
+rev = "v0.2.62"
+
+[[repos.hooks]]
+id = "rumdl"
+args = ["--config", ".rumdl.toml"]
+
+[[repos]]
+repo = "https://github.com/astral-sh/ruff-pre-commit"
+rev = "v0.16.5"
+
+[[repos.hooks]]
+id = "ruff"
+args = ["--config", "ruff.toml"]
+
+[[repos]]
+repo = "https://github.com/astral-sh/ty-pre-commit"
+rev = "v0.0.75"
+
+[[repos.hooks]]
+id = "ty"
+# Upstream always_run would fail before a Python package exists.
+# The hook entry is `uv check`; TY_CONFIG_FILE is equivalent to ty --config-file.
+env = { TY_CONFIG_FILE = "ty.toml" }
+stages = ["manual"]
+
+[[repos]]
+repo = "local"
+
+[[repos.hooks]]
+id = "pytest"
+name = "pytest"
+language = "system"
+entry = "uv run pytest"
+pass_filenames = false
+files = "\\.py$"
